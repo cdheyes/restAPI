@@ -20,6 +20,19 @@ exports.listMovies = async (req, res) => {
 	}
 };
 
+exports.updateMovie = async (req, res) => {
+	try {
+		const upMovie = await Movie.findOneAndUpdate(
+			{ title: req.body.title },
+			{ $set: { actors: req.body.actors } }
+		);
+		res.status(200).send({ upMovie });
+	} catch (error) {
+		console.log(error);
+		res.status(500).send({ error: error.message });
+	}
+};
+
 exports.deleteMovie = async (req, res) => {
 	try {
 		const delMovie = await Movie.findOneAndDelete(req.body.title);
