@@ -19,3 +19,13 @@ exports.listMovies = async (req, res) => {
 		res.status(500).send({ error: error.message });
 	}
 };
+
+exports.deleteMovie = async (req, res) => {
+	try {
+		const delMovie = await Movie.findOneAndDelete(req.body.title);
+		res.status(200).send({ delMovie });
+	} catch (error) {
+		console.log(error);
+		res.status(500).send({ error: error.message });
+	}
+};
