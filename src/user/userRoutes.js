@@ -1,12 +1,20 @@
 const { Router } = require("express");
-const { hashPass } = require("../middleware");
+const { hashPass, checkAccount } = require("../middleware");
 const userRouter = Router();
 
-const { addUser, listUsers, deleteUser } = require("./userController");
+const {
+	addUser,
+	listUsers,
+	updateUser,
+	deleteUser,
+	loginUser,
+} = require("./userController");
 
-// use http verb post to add data to our movie endpoint
+// use http verbs to send data to our user endpoint
 userRouter.post("/user", hashPass, addUser);
 userRouter.get("/user", listUsers);
+userRouter.patch("/movie", updateUser);
 userRouter.delete("/user", deleteUser);
+userRouter.post("/user/login", checkAccount, loginUser);
 
 module.exports = userRouter;

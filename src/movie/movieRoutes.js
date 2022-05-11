@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const movieRouter = Router();
 
 const {
 	addMovie,
@@ -6,8 +7,6 @@ const {
 	updateMovie,
 	deleteMovie,
 } = require("./movieControllers");
-
-const movieRouter = Router();
 
 // use http verb post to add data to our movie endpoint
 movieRouter.post("/movie", addMovie);

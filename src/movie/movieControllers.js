@@ -22,11 +22,11 @@ exports.listMovies = async (req, res) => {
 
 exports.updateMovie = async (req, res) => {
 	try {
-		const upMovie = await Movie.findOneAndUpdate(
+		const updatedMovie = await Movie.findOneAndUpdate(
 			{ title: req.body.title },
 			{ $set: { actors: req.body.actors } }
 		);
-		res.status(200).send({ upMovie });
+		res.status(200).send({ updatedMovie });
 	} catch (error) {
 		console.log(error);
 		res.status(500).send({ error: error.message });
