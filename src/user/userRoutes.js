@@ -13,7 +13,7 @@ const {
 // use http verbs to send data to our user endpoint
 userRouter.post("/user", hashPass, addUser);
 userRouter.get("/user", listUsers);
-userRouter.patch("/movie", updateUser);
+userRouter.patch("/user", updateUser);
 userRouter.delete("/user", deleteUser);
 userRouter.post("/user/login", checkAccount, loginUser);
 
